@@ -1,15 +1,12 @@
 ---
-import Header from '../components/Header.astro'
+import Layout from '../layouts/Layout.astro'
 ---
-<!doctype html>
-<html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>Offres</title>
-  </head>
-  <body>
-        <Header />
-    <h1>Offres</h1>
-  </body>
-</html>
+<Layout titre="Offres">
+  <h1 class="text-5xl font-extrabold text-yellow-400 mb-4">Offres</h1>
+  <p class="text-green-900 text-lg mb-4">
+    Voici nos dernières offres disponibles. Cliquez sur chaque annonce pour plus de détails.
+  </p>
+  <p class="text-green-900">
+    Nous mettons régulièrement à jour nos listings pour vous proposer les meilleures opportunités.
+  </p>
+</Layout>

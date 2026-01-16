@@ -1,3 +1,25 @@
 ---
 import '../styles/global.css'
+import Header from '../components/Header.astro';
+
+const { titre } = Astro.props;
 ---
+
+
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{titre}</title>
+  </head>
+  <body class="bg-yellow-50 text-green-900 font-sans">
+    <Header />
+    <main class="max-w-4xl mx-auto p-8">
+      <slot />
+    </main>
+    <footer class="bg-yellow-200 text-center p-4 mt-8">
+      © 2026 — Agence immobilière
+    </footer>
+  </body>
+</html>
+
