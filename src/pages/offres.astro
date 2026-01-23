@@ -48,12 +48,22 @@ const offres = [
     Nous mettons régulièrement à jour nos listings pour vous proposer les meilleures opportunités.
   </p>
 
+<button
+  id="favori-button"
+  class="bg-slate-600 rounded-lg text-white p-2 mt-6 mb-6"
+>
+  Afficher les favoris
+</button>
+
 
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
   {
-    offres.map(offre => (
-      <OffreCard offre={offre} />
-    ))
+offres.map(offre => (
+  <div class="offre" data-favori={offre.favori.toString()}>
+    <OffreCard offre={offre} />
+  </div>
+))
+
   }
 </div>
 
@@ -61,3 +71,27 @@ const offres = [
 
 
 </Layout>
+
+
+
+<script>
+    const button = document.getElementById('favori-button');
+    let showOnlyFavorites = false;
+    
+    button?.addEventListener('click', () => {
+        showOnlyFavorites = !showOnlyFavorites;
+        const offres = document.querySelectorAll('.offre');
+        
+        offres.forEach(offre => {
+            const isFavori = offre.dataset.favori === 'true';
+            
+            if (showOnlyFavorites) {
+                offre.style.display = isFavori ? 'block' : 'none';
+                button.textContent = 'Afficher tout';
+            } else {
+                offre.style.display = 'block';
+                button.textContent = 'Afficher les favoris';
+            }
+        });
+    });
+</script>
