@@ -83,13 +83,14 @@ offres.map(offre => (
         const offres = document.querySelectorAll('.offre');
         
         offres.forEach(offre => {
-            const isFavori = offre.dataset.favori === 'true';
+             const elem = offre as HTMLElement;
+             const isFavori = elem.dataset.favori === 'true';
             
             if (showOnlyFavorites) {
-                offre.style.display = isFavori ? 'block' : 'none';
+                elem.style.display = isFavori ? 'block' : 'none';
                 button.textContent = 'Afficher tout';
             } else {
-                offre.style.display = 'block';
+                elem.style.display = 'block';
                 button.textContent = 'Afficher les favoris';
             }
         });
