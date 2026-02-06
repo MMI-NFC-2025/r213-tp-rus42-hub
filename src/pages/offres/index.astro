@@ -28,6 +28,13 @@ const offres = await getOffres();
     Afficher les favoris
   </button>
 
+   <p class="text-green-900 mb-4">
+  Filtrer nos maisons :
+  <a href="/offres/surface/80" class="text-yellow-400 hover:underline">Surface ≥ 80 m²</a> |
+  <a href="/offres/prix/300000" class="text-yellow-400 hover:underline">Prix ≤ 300000 €</a>
+</p>
+
+
   <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
     {
       offres.map(offre => (
