@@ -2,7 +2,7 @@ import PocketBase from 'pocketbase';
 
 const db = new PocketBase('http://127.0.0.1:8090');
 
-export async function getOffres() {
+async function getOffres() {
     try {
         const data = await db.collection('maison').getFullList({
             sort: '-created',
@@ -14,7 +14,7 @@ export async function getOffres() {
     }
 }
 
-export async function getOffre(id) {
+async function getOffre(id) {
     try {
         const data = await db.collection('maison').getOne(id);
         return data;
@@ -24,11 +24,11 @@ export async function getOffre(id) {
     }
 }
 
-export async function getImageUrl(record, recordImage) {
+async function getImageUrl(record, recordImage) {
     return db.files.getURL(record, recordImage);
 }
 
-export async function addOffre(house) {
+async function addOffre(house) {
   try {
     await db.collection("maison").create(house);
     return {
@@ -44,7 +44,7 @@ export async function addOffre(house) {
   }
 }
 
-export async function filterByPrix(min, max) {
+async function filterByPrix(min, max) {
     try {
         const all = await db.collection('maison').getFullList({ sort: '-created' });
         return all.filter(m => m.prix >= min && m.prix <= max);
@@ -53,3 +53,5 @@ export async function filterByPrix(min, max) {
         return [];
     }
 }
+
+export { addOffre as a, getOffre as b, getImageUrl as c, filterByPrix as f, getOffres as g };

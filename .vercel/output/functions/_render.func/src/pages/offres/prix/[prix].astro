@@ -1,0 +1,25 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import OffreCard from '../../../components/OffreCard.astro';
+import { getOffres } from '../../../js/backend.mjs';
+
+const { prix } = Astro.params; 
+const allOffres = await getOffres();
+
+
+const filteredOffres = allOffres.filter(offre => offre.prix <= Number(prix));
+---
+
+<Layout titre={`Maisons ≤ ${prix} €`}>
+  <h1 class="text-4xl font-bold text-cyan-400 mb-4">Maisons avec prix ≤ {prix} €</h1>
+
+  {filteredOffres.length === 0 ? (
+    <p class="text-green-900">Aucune maison ne correspond à ce critère.</p>
+  ) : (
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {filteredOffres.map(offre => (
+        <OffreCard offre={offre} />
+      ))}
+    </div>
+  )}
+</Layout>
